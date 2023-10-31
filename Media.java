@@ -3,10 +3,10 @@
  * @version 1.00
  */
 public abstract class Media implements Comparable<Media> {
-    protected Genre genre;
-    protected String name;
-    protected int rating;
-    protected double rentalPrice;
+    private Genre genre;
+    private String name;
+    private int rating;
+    private double rentalPrice;
 
     /**
      * Constructor for new Media object. Should only be run by subclasses.
@@ -15,7 +15,7 @@ public abstract class Media implements Comparable<Media> {
      * @param rating int representing user ratings
      * @param rentalPrice double-precision float representing rental price
      */
-    protected Media(Genre genre, String name, int rating, double rentalPrice) {
+    public Media(Genre genre, String name, int rating, double rentalPrice) {
         this.genre = genre;
         this.name = name;
         this.rating = rating;
@@ -28,7 +28,7 @@ public abstract class Media implements Comparable<Media> {
      * @param name String representing the title of this Media
      * @param rating int representing the user ratings for this Media
      */
-    protected Media(Genre genre, String name, int rating) {
+    public Media(Genre genre, String name, int rating) {
         this(genre, name, rating, 7.0);
     }
 
