@@ -6,22 +6,35 @@ import java.util.ArrayList;
 public class Blockbuster {
     private ArrayList<Media> inventory;
 
+    /**
+     * No-Arg constructor for new Blockbuster.
+     * Creates empty inventory
+     */
     public Blockbuster() {
         inventory = new ArrayList<Media>();
     }
 
+    /**
+     * Adds a Media object to the inventory array.
+     * @param m Media object to add to inventory
+     */
     public void addMedia(Media m) {
         if (m != null) {
             inventory.add(m);
         }
     }
 
+    /**
+     * Performs a linear search for a Media object and removes it from inventory.
+     * @param m Media object to attempt to remove
+     * @return Media object that was removed
+     */
     public Media removeMedia(Media m) {
         if (m == null) {
             return null;
         }
-        
-        for(int i = 0; i < inventory.size(); i++) {
+
+        for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i).equals(m)) {
                 return inventory.remove(i);
             }
@@ -29,6 +42,9 @@ public class Blockbuster {
         return null;
     }
 
+    /**
+     * Sorts media using bubble sort algorithm.
+     */
     public void sortMedia() {
         for (int i = 1; i < inventory.size(); i++) {
             for (int j = 0; j < inventory.size() - i; j++) {
@@ -41,13 +57,20 @@ public class Blockbuster {
         }
     }
 
+    //implements a binary search
+    //Time complexity: Log(n) base2
+    /**
+     * Finds specified Media object using binary search, returning null if not found.
+     * @param m Media object to attempt to find
+     * @return Media object found
+     */
     public Media findMedia(Media m) {
         if (m == null) {
             return null;
         }
         int low = 0;
         int high = inventory.size() - 1;
-        while(low <= high) {
+        while (low <= high) {
             int mid = (low + high) / 2;
             if (inventory.get(mid).compareTo(m) == 0) {
                 return inventory.get(mid);
@@ -61,6 +84,10 @@ public class Blockbuster {
         return null;
     }
 
+    /**
+     * Finds Movie with highest ratings and first lexicographical ordering.
+     * @return Movie object representing most popular Movie
+     */
     public Movie getMostPopularMovie() {
         int max = -1;
         for (int i = 0; i < inventory.size(); i++) {
